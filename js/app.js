@@ -5,6 +5,7 @@ new Vue({
 		todo:'',
 		list:[
 		],
+		modifyTodos:'',
 	},
 	methods:{
 		addTodos:function(){
@@ -17,6 +18,10 @@ new Vue({
 		deleteTodo:function(item){
 			var index = this.list.indexOf(item);
 			this.list.splice(index,1);
+		},
+		modifyTodo:function(item){
+			this.modifyTodos = item;
+			console.log(item);
 		}
 	},
 	computed:{
