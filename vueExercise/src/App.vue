@@ -1,14 +1,22 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+    <first></first>
+    <slide></slide>
   </div>
 </template>
 
 <script>
-export default {
-  name: 'App'
-}
+    import first from './components/first'
+    import slide from './components/slide'
+    export default{
+      data(){
+        return {}
+      },
+      components:{
+        first,
+        slide
+      }
+    }
 </script>
 
 <style>
