@@ -33,7 +33,7 @@
 			autoPlay(){
 				this.mark++;
 				if(this.mark==4){
-					this.mark=0;
+					this.mark = 0;
 				}
 			},
 			play(){
@@ -47,11 +47,19 @@
 			},
 			start(){
 				this.timer = setInterval(this.autoPlay,2500);
-			}
+			},
+			handleScroll(){
+				var scrollTop = document.body.scrollTop||document.documentElement.scrollTop;
+				console.log(scrollTop);
+			},
 		},
 		created(){
 			this.play();
-		}
+		},
+		mounted(){
+			window.addEventListener("scroll",this.handleScroll)
+		},
+		
 	}
 </script>
 <style>  

@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <first></first>
+    <tab></tab>
     <slide></slide>
   </div>
 </template>
 
 <script>
-    import first from './components/first'
+    import tab from './components/tab'
     import slide from './components/slide'
     export default{
       data(){
         return {}
       },
       components:{
-        first,
+        tab,
         slide
       }
     }
