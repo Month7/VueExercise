@@ -1,24 +1,15 @@
 <template>
     <div id="app">
-        <router-link to="/home">Home</router-link>
-        <router-link to="/about">About</router-link>
+        <router-link to="/home">slide</router-link>
+        <router-link to="/about">todo</router-link>
         <router-view></router-view> 
-        <!-- <slide></slide> -->
     </div>
 </template>
-
 <script>
-    import tab from './components/tab'
-    import slide from './components/slide'
     export default{
       data(){
         return {}
       },
-      components:{
-        tab,
-        slide
-      },
-      //router
     }
 </script>
 

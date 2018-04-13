@@ -1,15 +1,16 @@
 <template>
-  <div>
-      <h1>about</h1>
-      <p>{{msg}}</p>
-  </div>
+    <todo></todo>
 </template>
 <script>
+import todo from './todo'
 export default {
   data(){
       return{
-          msg:"我是about"
+          
       }
+  },
+  components:{
+      todo,
   }
 }
 </script>

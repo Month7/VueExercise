@@ -1,15 +1,17 @@
 <template>
   <div>
-      <h1>home</h1>
-      <p>{{msg}}</p>
+      <slide></slide>
   </div>
 </template>
 <script>
+import slide from './slide'
 export default {
   data(){
       return{
-          msg:"我是home"
       }
-  }
+  },
+  components:{
+    slide
+    },
 }
 </script>
