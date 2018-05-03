@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <style>
+        .container{
+            display: flex;
+            height: 4444px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>{{index}}</h1>
+        <router-link :to="{name:'home'}">{{index}}</router-link>
+        <router-link to="/about">about</router-link>
+        <router-link to="/user/1/posts">user</router-link>
+        <router-link to="/user/2/posts2">user</router-link>
+        <router-link to="/user/3">user</router-link>
+        <router-link to="/user/4">user</router-link>
+        <div class="container">
+            <router-view></router-view>
+            <router-view class="left" name="left"></router-view>
+            <router-view class="right" name="right"></router-view>
+        </div>
+    </div>
+</body>
+<script>
+    //定义路由组件
+    const Home = {template:'<div>这是home</div>'};
+    const About = {template:'<div>这是about</div>'};
+    const Posts = {template:'<div>这是Posts</div>'}
+    const Posts2 = {template:'<div>这是Posts2</div>'}
+    const Left = {template:'<div>Left</div>'}
+    const Right = {template:'<div>Right</div>'}
+    const User = {
+        props:['id'],
+        template:`
+        <div class="wtf">
+            这是User的id{{$route.params.id}}
+            <router-view></router-view>
+        </div>`
+    };
+    //定义路由
+    const routes = [
+        {
+            path:'/index',
+            components:{
+                default:Home,
+                left:Left,
+                right:Right
+            },
+            name:'home'
+        },
+        {path:'/about',component:About},
+        {
+            path:'/user/:id',
+            component:User,
+            props:true,
+            children:[{
+                path:'posts',
+                components:{
+                    default:Posts
+                }
+            },{
+                path:'posts2',
+                components:{
+                    default:Posts2
+                }
+            },{
+                path:'',
+                component:Posts
+            }]
+        }
+    ]
+    //创建router实例
+    const router = new VueRouter({
+        routes:routes,
+        scrollBehavior(to,from,savedPosition){
+            return {x:0,y:0}
+        }
+    })
+    //创建和挂载根实例
+    new Vue({
+        el:'#app',
+        data:{
+            index:'index11'
+        },
+        router,
+        watch:{
+            '$route'(to,from){
+                console.log('对路由变化作出响应...');
+            }
+        }
+    })
+</script>
+</html>
